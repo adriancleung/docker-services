@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  home-assistant:
+    container_name: Home-Assistant
+    image: homeassistant/home-assistant:latest
+    restart: always
+    network_mode: host
+    environment:
+      TZ: America/Edmonton
+    volumes:
+      - /srv/dev-disk-by-label-DATA/Docker/Home Assistant:/config

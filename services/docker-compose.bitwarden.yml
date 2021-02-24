@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  bitwarden:
+    container_name: Bitwarden
+    image: bitwardenrs/server:latest
+    restart: always
+    hostname: SHBWRS01
+    network_mode: bridge
+    ports:
+      - 3012:3012
+      - 6080:80
+    environment:
+      ADMIN_TOKEN: 
+      WEBSOCKET_ENABLED: 'true'
+    volumes:
+      - /srv/dev-disk-by-label-DATA/Docker/Bitwarden_rs:/data

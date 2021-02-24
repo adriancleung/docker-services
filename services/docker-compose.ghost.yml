@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  ghost:
+    container_name: Ghost
+    image: ghost:latest
+    restart: always
+    hostname: SHGHST01
+    network_mode: bridge
+    ports:
+      - 3001:2368
+    environment:
+      url: https://blog.adrianleung.dev
+    volumes:
+      - /srv/dev-disk-by-label-DATA/Docker/Ghost:/var/lib/ghost/content

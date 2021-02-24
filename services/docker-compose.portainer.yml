@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  portainer:
+    container_name: Portainer
+    image: portainer/portainer-ce:latest
+    restart: always
+    hostname: SHPT01
+    network_mode: bridge
+    ports:
+      - 6000:8000
+      - 7000:9000
+    environment:
+      TZ: America/Edmonton
+    volumes:
+      - /srv/dev-disk-by-label-ServerHDD/Docker/Portainer:/data
+      - /var/run/docker.sock:/var/run/docker.sock

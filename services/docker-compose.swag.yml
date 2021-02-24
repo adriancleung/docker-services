@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+  swag:
+    container_name: Swag
+    image: linuxserver/swag:latest
+    restart: always
+    hostname: SHSWAG01
+    network_mode: bridge
+    ports:
+      - 5443:443
+      - 5080:80
+    environment:
+      TZ: America/Edmonton
+      PUID: 1000
+      PGID: 100
+      VALIDATION: dns
+      DNSPLUGIN: cloudflare
+      DHLEVEL: 4096
+      URL: serverhdd.ca
+      SUBDOMAINS: wildcard
+      ONLY_SUBDOMAINS: 'false'
+      EMAIL: admin@serverhdd.ca
+    volumes:
+      - /srv/dev-disk-by-label-DATA/Docker/Swag:/config
+    cap_add:
+      - NET_ADMIN

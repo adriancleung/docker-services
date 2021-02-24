@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  code-server:
+    container_name: Code-Server
+    image: linuxserver/code-server:latest
+    restart: always
+    hostname: SHCS01
+    network_mode: bridge
+    ports:
+      - 11443:8443
+    environment:
+      SUDO_PASSWORD: 
+      PASSWORD: 
+    volumes:
+      - /srv/dev-disk-by-label-DATA/Docker/Code Server:/config

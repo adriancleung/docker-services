@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  openvpn:
+    container_name: OpenVPN-AS
+    image: linuxserver/openvpn-as:latest
+    restart: always
+    hostname: SHVPN01
+    network_mode: bridge
+    ports:
+      - 1194:1194/udp
+      - 943:943
+      - 9443:9443
+    environment:
+      TZ: America/Edmonton
+      PUID: 1000
+      PGID: 100
+      INTERFACE: eth0
+    volumes:
+      - /srv/dev-disk-by-label-DATA/Docker/OpenVPN-AS:/config
+    cap_add:
+      - NET_ADMIN

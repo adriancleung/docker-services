@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  guacamole:
+    container_name: Guacamole
+    image: oznu/guacamole:latest
+    restart: always
+    hostname: SHGM01
+    network_mode: bridge
+    ports:
+      - 18080:8080

@@ -1,0 +1,37 @@
+version: '3.9'
+services:
+  authelia:
+    container_name: Authelia
+    labels:
+      com.adriancleung.authelia:
+    image: authelia/authelia:latest
+    restart: always
+    hostname: SHAUTH01
+    networks:
+      net_bridge:
+    ports:
+      - 9092:9091
+    environment:
+      TZ: America/Edmonton
+    volumes:
+      - /srv/dev-disk-by-label-DATA/Docker/Authelia:/config
+
+  redis:
+    container_name: Redis
+    labels:
+      com.adriancleung.redis:
+    image: redis:alpine
+    restart: always
+    hostname: SHRDS01
+    networks:
+      net_bridge:
+    expose:
+      - 6379
+    environment:
+      TZ: America/Edmonton
+    volumes:
+      - /srv/dev-disk-by-label-DATA/Docker/Redis:/data
+
+networks:
+  net_bridge:
+    driver: bridge

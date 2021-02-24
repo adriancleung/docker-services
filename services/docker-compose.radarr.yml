@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  radarr:
+    container_name: Radarr
+    image: linuxserver/radarr:latest
+    restart: always
+    hostname: SHRDR01
+    network_mode: bridge
+    ports:
+      - 7878:7878
+    environment:
+      TZ: America/Edmonton
+      PUID: 1000
+      PGID: 100
+    volumes:
+      - /srv/dev-disk-by-label-DATA/Docker/Radarr:/config
+      - /srv/dev-disk-by-label-DATA/Share/Torrents:/downloads
+      - /srv/dev-disk-by-label-DATA/Share/Movies:/movies

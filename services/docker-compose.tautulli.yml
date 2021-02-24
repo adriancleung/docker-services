@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  tautulli:
+    container_name: Tautulli
+    image: linuxserver/tautulli:latest
+    restart: always
+    hostname: SHTAUT01
+    network_mode: bridge
+    ports:
+      - 8181:8181
+    environment:
+      TZ: America/Edmonton
+      PUID: 1000
+      PGID: 100
+    volumes:
+      - /srv/dev-disk-by-label-ServerHDD/plexmediaserver/Library/Application Support/Plex Media Server/Logs:/logs:ro
+      - /srv/dev-disk-by-label-ServerHDD/Docker/Tautulli:/config
